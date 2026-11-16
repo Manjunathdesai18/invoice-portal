@@ -1,9 +1,9 @@
-# Smart Invoice & Billing Portal - Enterprise Edition
 
-![SmartInvoice](https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80)
+
 
 # 🧾 Invoicex — Enterprise AI-Powered Billing & Financial Portal
 
+![SmartInvoice](https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80)
 <div align="center">
 
 [![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)

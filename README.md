@@ -2,152 +2,134 @@
 
 ![SmartInvoice](https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80)
 
-A professional, industry-level SaaS application for business invoice and billing management. Built with modern web technologies to deliver a premium user experience, enterprise-grade architecture, and advanced AI-powered analytics. Designed as an **A+ Grade Final Year Project**.
+# 🧾 Invoicex — Enterprise AI-Powered Billing & Financial Portal
 
-## 🚀 Features
+<div align="center">
 
-- **Premium UI/UX:** Glassmorphism, modern gradients, Framer Motion animations, dark mode, and responsive layout.
-- **AI Integration (OpenAI API):** Smart invoice line item description generator, predictive revenue analytics, and personalized financial insights.
-- **Advanced Document Generation:** Generate, download, and email PDF invoices directly. Export reports to Excel and CSV.
-- **Real-Time Dashboards:** Interactive Recharts graphics, KPI tracking, and Socket.io powered live notifications.
-- **Robust Security:** JWT authentication, Helmet.js for HTTP headers, express-rate-limit, express-mongo-sanitize, XSS protection, and role-based access control.
-- **Automated Workflows:** Send professional invoice emails directly to clients using Nodemailer.
-- **Comprehensive Audit Logs:** Tracks and stores all activity logs for enhanced traceability and accountability.
+[![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
+[![Vite](https://img.shields.io/badge/Vite-5.0-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
+[![Node.js](https://img.shields.io/badge/Node.js-18+-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
+[![Express.js](https://img.shields.io/badge/Express-5.x-000000?style=for-the-badge&logo=express&logoColor=white)](https://expressjs.com/)
+[![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://www.mysql.com/)
+[![OpenAI](https://img.shields.io/badge/OpenAI-GPT--4-412991?style=for-the-badge&logo=openai&logoColor=white)](https://openai.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
-## 🛠️ Technology Stack
+A scalable, multi-tenant billing management platform engineered with React, Express, and MySQL. Features dynamic PDF generation, automated email delivery, real-time analytics, and OpenAI GPT-4 assisted financial intelligence.
 
-- **Frontend:** React.js, Vite, Tailwind CSS, Framer Motion, Lucide Icons, Recharts, React Hook Form, Zod.
-- **Backend:** Node.js, Express.js, Socket.io, PDFKit, ExcelJS, OpenAI, Nodemailer.
-- **Database:** MySQL.
-- **DevOps:** Docker ready, Deployment ready for Vercel, Render/Railway.
+</div>
 
-## 📁 Project Structure
-```
-.
-├── backend/            # Express REST API
-│   ├── config/         # Database connection
-│   ├── controllers/    # Request handlers (auth, ai, document, etc.)
-│   ├── middleware/     # Auth & validation
-│   ├── models/         # (If using ORM, otherwise schemas)
-│   ├── routes/         # API endpoints
-│   ├── services/       # AI, Email, Document logic
-│   ├── .env            # Environment variables
-│   ├── database.sql    # MySQL Schema
-│   └── server.js       # Server entry point
-│
-└── frontend/           # React + Vite Application
-    ├── src/
-    │   ├── components/ # Reusable UI elements
-    │   ├── context/    # Global state (AuthContext)
-    │   ├── layouts/    # DashboardLayout
-    │   ├── pages/      # Views (Dashboard, Invoices, Clients, LandingPage, Reports)
-    │   ├── services/   # Axios API configurations
-    │   ├── App.jsx     # Main React router setup
-    │   └── main.jsx    # React DOM entry
-    ├── tailwind.config.js
-    └── index.css       # Global styles with CSS variables
-```
+---
 
-## 📦 Environment Setup
+## ✨ Core Capabilities
 
-### Backend Environment Variables (`backend/.env`)
-Create a `.env` file in the `backend` directory:
+### 💼 Invoicing & Client Operations
+- **Interactive Invoice Builder**: Real-time tax math, discounts, unit quantities, and multi-currency formats.
+- **Client Directory**: Manage customer contacts, billing addresses, and payment records.
+- **PDF Generation Engine**: Programmatic vector PDF invoices generated on-the-fly using `PDFKit`.
+- **Automated Dispatch**: Instant customer invoice delivery via `Nodemailer` with customizable HTML email templates.
+- **Data Exporting**: One-click download of billing records in Excel (`.xlsx`) via `ExcelJS` and CSV via `json2csv`.
+
+### 🤖 AI Financial Co-Pilot (OpenAI)
+- **Smart Item Description**: Autogenerates work summaries and itemized invoice descriptions from brief prompts.
+- **Revenue Prediction**: Analyzes historic invoice cash flow to predict next quarter's revenue trajectory.
+
+---
+
+## ⚙️ Environment Variables
+
+Create `backend/.env`:
 ```env
 PORT=5000
+NODE_ENV=development
+
+# MySQL Database
 DB_HOST=localhost
-DB_PORT=3306
 DB_USER=root
-DB_PASSWORD=your_password
+DB_PASSWORD=your_mysql_password
 DB_NAME=invoice_portal
-JWT_SECRET=your_super_secret_jwt_key
+DB_PORT=3306
+
+# Authentication
+JWT_SECRET=super_secret_jwt_random_key_64_chars
 JWT_EXPIRES_IN=30d
-FRONTEND_URL=http://localhost:5173
-OPENAI_API_KEY=sk-your_openai_api_key
+
+# SMTP Settings
 EMAIL_HOST=smtp.mailtrap.io
 EMAIL_PORT=2525
-EMAIL_USER=your_email_user
-EMAIL_PASS=your_email_pass
+EMAIL_USER=your_mailtrap_user
+EMAIL_PASS=your_mailtrap_pass
+
+# OpenAI Integration
+OPENAI_API_KEY=sk-your_openai_api_key
+
+FRONTEND_URL=http://localhost:5173
 ```
 
-### Frontend Environment Variables (`frontend/.env`)
-Create a `.env` file in the `frontend` directory:
+Create `frontend/.env`:
 ```env
 VITE_API_URL=http://localhost:5000/api
 ```
 
-## 🏗️ Installation & Running Locally
+---
 
-1. **Database Setup**
-   - Create a MySQL database named `invoice_portal`.
-   - Run the SQL queries found in `backend/database.sql` to generate the schema.
+## 🚀 Installation & Local Setup
 
-2. **Backend Setup**
-   ```bash
-   cd backend
-   npm install
-   npm start
-   # Server runs on http://localhost:5000
-   ```
+### 1. Initialize Database
+```bash
+mysql -u root -p -e "CREATE DATABASE IF NOT EXISTS invoice_portal;"
+mysql -u root -p invoice_portal < backend/database.sql
+```
 
-3. **Frontend Setup**
-   ```bash
-   cd frontend
-   npm install
-   npm run dev
-   # App runs on http://localhost:5173
-   ```
+### 2. Start Backend
+```bash
+cd backend
+npm install
+npm run dev
+# Server running at http://localhost:5000
+```
 
-## 📖 REST API Documentation
-
-### Authentication endpoints
-- `POST /api/auth/register`: Register a new user (admin/staff/accountant).
-- `POST /api/auth/login`: Authenticate and receive JWT token.
-- `GET /api/auth/me`: Get current logged in user details.
-
-### Client endpoints (Requires Auth)
-- `GET /api/clients`: Retrieve all clients.
-- `POST /api/clients`: Add a new client.
-- `PUT /api/clients/:id`: Update client details.
-- `DELETE /api/clients/:id`: Delete a client.
-
-### Invoice & Document endpoints (Requires Auth)
-- `GET /api/invoices`: Retrieve all invoices.
-- `GET /api/invoices/:id`: Get a specific invoice by ID.
-- `POST /api/invoices`: Create a new invoice with line items.
-- `PUT /api/invoices/:id`: Update invoice status.
-- `DELETE /api/invoices/:id`: Delete an invoice.
-- `GET /api/invoices/:id/pdf`: Download the invoice as a PDF document.
-- `POST /api/invoices/:id/email`: Send the PDF invoice via email to the client.
-
-### Dashboard & Analytics (Requires Auth)
-- `GET /api/dashboard/stats`: Retrieve KPI statistics, pending amounts, and recent activity.
-
-### AI Endpoints (Requires Auth)
-- `POST /api/ai/generate-description`: Generate invoice item descriptions using GPT-4.
-- `GET /api/ai/predict-revenue`: Predict next month's revenue based on historical data.
-- `GET /api/ai/smart-advice`: Fetch actionable financial insights using AI.
-
-## 🚀 Deployment Guide
-
-### Database (PlanetScale / Railway / Aiven)
-1. Create a managed MySQL database instance.
-2. Execute the `backend/database.sql` script to initialize the schema.
-3. Obtain the connection string.
-
-### Backend (Render / Railway)
-1. Create a new Web Service.
-2. Connect your GitHub repository and point to the `backend` folder as the root directory.
-3. Set the build command: `npm install`
-4. Set the start command: `npm start`
-5. Configure all necessary Environment Variables in the platform's dashboard.
-
-### Frontend (Vercel)
-1. Create a new project on Vercel.
-2. Connect your repository and select the `frontend` folder as the Root Directory.
-3. Framework Preset: `Vite`
-4. Build Command: `npm run build`
-5. Output Directory: `dist`
-6. Add the `VITE_API_URL` environment variable pointing to your deployed Backend URL.
+### 3. Start Frontend
+```bash
+cd ../frontend
+npm install
+npm run dev
+# Client running at http://localhost:5173
+```
 
 ---
-*Built with ❤️ for a modern enterprise-grade experience.*
+
+## 📡 REST API Documentation
+
+### Auth & User (`/api/auth`)
+| Method | Endpoint | Description |
+|:---|:---|:---|
+| `POST` | `/api/auth/register` | Register new organization user |
+| `POST` | `/api/auth/login` | Authenticate user & receive JWT token |
+| `GET` | `/api/auth/me` | Retrieve authenticated profile |
+
+### Invoices (`/api/invoices`)
+| Method | Endpoint | Description |
+|:---|:---|:---|
+| `GET` | `/api/invoices` | List invoices with pagination & status filters |
+| `POST` | `/api/invoices` | Create invoice with dynamic line items |
+| `GET` | `/api/invoices/:id/pdf` | Stream or download rendered PDF file |
+| `POST` | `/api/invoices/:id/email` | Trigger automated email with attached PDF |
+
+### AI Financial Assistant (`/api/ai`)
+| Method | Endpoint | Description |
+|:---|:---|:---|
+| `POST` | `/api/ai/generate-description` | Autogenerate line-item scope with GPT-4 |
+| `GET` | `/api/ai/predict-revenue` | Compute forecast modeling on past invoices |
+
+---
+
+## 👨‍💻 Author
+
+**Manjunath Desai**
+- GitHub: [@Manjunathdesai18](https://github.com/Manjunathdesai18)
+- Email: manjunathdesai920@gmail.com
+
+---
+
+## 📄 License
+This project is licensed under the [MIT License](LICENSE).
